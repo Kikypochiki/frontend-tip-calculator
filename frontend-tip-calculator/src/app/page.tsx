@@ -14,18 +14,42 @@ export default function Home() {
       <div className="grid grid-cols-1 gap-12 p-5 md:grid-cols-2">
       <div className="text-cyan-900 font-bold text-xl flex flex-col gap-6">
       <p>Bill</p>
-      <input placeholder="0" className="bg-gray-100 rounded-md p-2 w-full"/>
+      <div className="relative flex items-center">
+        <Image
+          src="tip-calculator-app-main/images/icon-dollar.svg"
+          alt="Dollar Icon"
+          width={11}
+          height={17}
+          className="absolute left-3"
+        />
+        <input
+          placeholder="0"
+          className="bg-gray-100 rounded-md p-2 w-full text-right pl-8"
+        />
+      </div>
       <p>Select Tip %</p>
       <div className="grid grid-cols-3 gap-2">
         {[5, 10, 15, 25, 50].map((tip) => (
-        <button key={tip} className="bg-cyan-900 text-white rounded-md p-2 w-full">
+        <button key={tip} className="bg-cyan-900 text-white rounded-md p-2 w-full hover:bg-cyan-700 active:bg-cyan-500">
         {tip}%
         </button>
         ))}
         <input placeholder="Custom" className="bg-gray-100 rounded-md p-2 w-full" />
       </div>
       <p>Number of People</p>
-      <input placeholder="0" className="bg-gray-100 rounded-md p-2 w-full" />
+      <div className="relative flex items-center">
+        <Image
+          src="tip-calculator-app-main/images/icon-person.svg"
+          alt="Person Icon"
+          width={11}
+          height={17}
+          className="absolute left-3"
+        />
+        <input
+          placeholder="0"
+          className="bg-gray-100 rounded-md p-2 w-full text-right pl-8"
+        />
+      </div>
       </div>
       <div className="bg-cyan-900 text-white rounded-2xl p-6 flex flex-col justify-between">
         <div className="grid grid-rows-2 gap-6">
@@ -44,7 +68,7 @@ export default function Home() {
           <p className="text-3xl font-bold">$0.00</p>
         </div>
         </div>
-      <button className="bg-cyan-300 text-cyan-900 font-bold rounded-md p-2 w-full ">RESET</button>
+      <button className="bg-cyan-300 text-cyan-900 font-bold rounded-md p-2 w-full hover:bg-cyan-200 active:bg-cyan-100">RESET</button>
       </div>
       </div>
       </div>
