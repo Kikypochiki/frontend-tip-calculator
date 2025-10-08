@@ -38,13 +38,23 @@ export default function Home() {
           value={bill === 0 ? "" : bill}
           onChange={(e) => setBill(parseFloat(e.target.value) || 0)}
         />
+        {bill === 0 && (
+        <p className="text-red-500 text-xs absolute -top-5 right-0">Can't be zero</p>
+      )}
       </div>
       <p>Select Tip %</p>
       <div className="grid grid-cols-3 gap-2">
         {[5, 10, 15, 25, 50].map((tip) => (
-        <button key={tip} className="bg-cyan-900 text-white rounded-md p-2 w-full hover:bg-cyan-700 active:bg-cyan-500" 
-        onClick={() => setTipPercentage(tip)}>
-        {tip}%
+        <button
+          key={tip}
+          className={`rounded-md p-2 w-full 
+            ${tipPercentage === tip
+              ? "bg-cyan-500 text-cyan-900"
+              : "bg-cyan-900 text-white hover:bg-cyan-700 active:bg-cyan-500"
+            }`}
+          onClick={() => setTipPercentage(tip)}
+        >
+          {tip}%
         </button>
         ))}
         <input placeholder="Custom" className="bg-gray-100 rounded-md p-2 w-full" 
@@ -65,9 +75,12 @@ export default function Home() {
           placeholder="0"
           className="bg-gray-100 rounded-md p-2 w-full text-right pl-8"
           type="number"
-          value={numberOfPeople === 1 ? "" : numberOfPeople}
-          onChange={(e) => setNumberOfPeople(parseInt(e.target.value) || 1)}
+          value={numberOfPeople === 0 ? "" : numberOfPeople}
+          onChange={(e) => setNumberOfPeople(parseInt(e.target.value) || 0)}
         />
+        {numberOfPeople === 0 && (
+          <p className="text-red-500 text-xs absolute -top-5 right-0">Can't be zero</p>
+        )}
       </div>
       </div>
       <div className="bg-cyan-900 text-white rounded-2xl p-6 flex flex-col justify-between">
