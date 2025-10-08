@@ -30,6 +30,9 @@ export default function Home() {
         width={100}
         height={100}
       />
+      <div
+        className="bg-white p-3 rounded-2xl m-5 shadow-lg w-full max-w-3xl transition-all duration-300"
+      >
         <div className="grid grid-cols-1 gap-12 p-5 md:grid-cols-2">
           <div className="text-cyan-900 font-bold text-xl flex flex-col gap-6">
             <p>Bill</p>
@@ -138,5 +141,6 @@ export default function Home() {
           </div>
         </div>
       </div>
+    </div>
   );
 }
