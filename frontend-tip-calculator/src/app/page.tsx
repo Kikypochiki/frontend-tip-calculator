@@ -12,6 +12,10 @@ export default function Home() {
   const [bill, setBill] = useState(0);
   const [tipPercentage, setTipPercentage] = useState(0);
   const [numberOfPeople, setNumberOfPeople] = useState(1);
+
+  const tipAmountPerPerson = numberOfPeople > 0 ? (bill * (tipPercentage / 100)) / numberOfPeople : 0;
+  const totalAmountPerPerson = numberOfPeople > 0 ? (bill + (bill * (tipPercentage / 100))) / numberOfPeople : 0;
+
   return (
     <div className={`${spaceMono.className} flex flex-col items-center justify-center min-h-screen bg-cyan-50`}>
       <Image src="tip-calculator-app-main/images/logo.svg" alt="Logo" width={100} height={100} />
@@ -73,17 +77,23 @@ export default function Home() {
           <p className="text-sm">Tip Amount</p>
           <p className="text-xs text-gray-400">/ person</p>
           </div>
-          <p className="text-3xl font-bold">$0.00</p>
+            <p className="text-3xl font-bold">${tipAmountPerPerson.toFixed(2)}</p>
         </div>
         <div className="flex flex-row justify-between items-center">
           <div>
           <p className="text-sm">Total Amount</p>
           <p className="text-xs text-gray-400">/ person</p>
           </div>
-          <p className="text-3xl font-bold">$0.00</p>
+          <p className="text-3xl font-bold">${totalAmountPerPerson.toFixed(2)}</p>
         </div>
         </div>
-      <button className="bg-cyan-300 text-cyan-900 font-bold rounded-md p-2 w-full hover:bg-cyan-200 active:bg-cyan-100">RESET</button>
+      <button className="bg-cyan-300 text-cyan-900 font-bold rounded-md p-2 w-full hover:bg-cyan-200 active:bg-cyan-100"
+      onClick={() => {
+        setBill(0);
+        setTipPercentage(0);
+        setNumberOfPeople(1);
+      }}
+      >RESET</button>
       </div>
       </div>
       </div>
